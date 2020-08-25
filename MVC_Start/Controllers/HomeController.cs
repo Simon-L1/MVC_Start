@@ -3,21 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.KeyVault.Models;
 using MVC_Start.Models;
 
 namespace MVC_Start.Controllers
 {
-  public class HomeController : Controller
-  {
-    public IActionResult Index()
+    public class HomeController : Controller
     {
-      return View();
-    }
+        public IActionResult Index(int id)
+        {
+            return View();
+        }
 
-    public IActionResult IndexWithLayout()
-    {
-      return View();
-    }
+        public IActionResult IndexWithLayout()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            GuestContact contact = new GuestContact();
+
+            contact.Name = "Simon Li";
+            contact.Email = "sli8@usf.edu";
+            contact.Phone = "555-555-5555";
+
+
+            ViewData["Message"] = "Your contact page.";
+            return View(contact);
+
+        }
 
     /// <summary>
     /// Replicate the chart example in the JavaScript presentation
